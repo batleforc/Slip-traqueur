@@ -1,5 +1,5 @@
 .sheet {
-  @apply w-11/12 h-[95vh] bg-slate-50;
+  @apply w-11/12 h-fit mb-10 pb-4 bg-slate-50;
 
   .top-margin {
     @apply w-full h-10 flex justify-evenly items-center border-b-2 border-b-pink-200;
@@ -9,6 +9,7 @@
   }
   .title {
     @apply text-3xl my-2 mx-4;
+    font-family: "Playfair Display", serif;
   }
   .content {
     @apply mx-4;
@@ -16,5 +17,9 @@
 }
 
 .outer {
-  @apply w-screen h-screen bg-gray-400  justify-center flex;
+  @apply justify-center flex;
+}
+
+body {
+  @apply bg-gray-400;
 }

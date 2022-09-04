@@ -8,6 +8,7 @@ import banner from "vite-plugin-banner";
 
 // https://vitejs.dev/config/
 export default defineConfig({
+  base: "/Slip-traqueur/",
   plugins: [
     vue(),
     vueJsx(),

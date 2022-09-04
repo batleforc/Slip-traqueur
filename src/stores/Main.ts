@@ -4,6 +4,12 @@ import {
   type SleepMood,
   type SleepMoodType,
 } from "@/model/sleepMood";
+import {
+  getMoodValue,
+  getSleeValue,
+  setMoodValue,
+  setSleepValue,
+} from "@/model/Storage";
 import type { Chart } from "chart.js";
 import { defineStore } from "pinia";
 
@@ -22,25 +28,8 @@ export const useMainStore = defineStore({
       { name: "Sad/Angry", bgColor: "red", borderColor: "red" },
     ].reverse() as SleepMoodType[],
     SleepHours: [...Array(11).keys()].map((i) => i + 1 + "h"),
-    MoodValue: [
-      { x: 1, y: 4 },
-      { x: 2, y: 3 },
-      { x: 3, y: 2 },
-      { x: 4, y: 1 },
-      { x: 5, y: 4 },
-      { x: 6, y: 4 },
-      { x: 7, y: 0 },
-    ] as Array<SleepMood>,
-    SleepValue: [
-      { x: 1, y: 1 },
-      { x: 2, y: 2 },
-      { x: 3, y: 3 },
-      { x: 4, y: 4 },
-      { x: 5, y: 5 },
-      { x: 6, y: 6 },
-      { x: 7, y: 7 },
-      { x: 8, y: 8 },
-    ] as Array<SleepMood>,
+    MoodValue: getMoodValue(),
+    SleepValue: getSleeValue(),
   }),
   getters: {
     sleepRatio: (state) => 2.2,
@@ -66,6 +55,7 @@ export const useMainStore = defineStore({
       } else {
         this.MoodValue[index].y = Math.round(y);
       }
+      setMoodValue(this.MoodValue);
     },
     AddSleepValue(x: number | undefined, y: number | undefined) {
       if (x === undefined || y === undefined) return false;
@@ -78,6 +68,11 @@ export const useMainStore = defineStore({
       } else {
         this.SleepValue[index].y = Math.round(y);
       }
+      setSleepValue(this.SleepValue);
+    },
+    ReloadData() {
+      this.MoodValue = getMoodValue();
+      this.SleepValue = getSleeValue();
     },
   },
 });

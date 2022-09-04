@@ -33,7 +33,7 @@ export const useMainStore = defineStore({
   }),
   getters: {
     sleepRatio: (state) => 2.2,
-    moodRatio: (state) => state.Day.length / state.MoodType.length / 0.8,
+    moodRatio: (state) => state.Day.length / state.MoodType.length,
     moodBorderColors: (state) =>
       state.MoodValue.map((m) => state.MoodType[Math.round(m.y)].borderColor),
     moodBackColors: (state) =>

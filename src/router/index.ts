@@ -14,6 +14,10 @@ const router = createRouter({
       name: "help",
       component: () => import("@/views/HelpView.vue"),
     },
+    {
+      path: "/:error(.*)*",
+      redirect: { name: "home" },
+    },
   ],
 });
 

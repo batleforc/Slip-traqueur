@@ -66,8 +66,18 @@ export const useMainStore = defineStore({
       } else {
         this.MoodValue[index].y = Math.round(y);
       }
-
-      //this.MoodValue.push({ x: Math.round(x), y: Math.round(y) });
+    },
+    AddSleepValue(x: number | undefined, y: number | undefined) {
+      if (x === undefined || y === undefined) return false;
+      var index = this.SleepValue.findIndex((m) => m.x === Math.round(x) + 1);
+      if (index === -1) {
+        this.SleepValue = [
+          ...this.SleepValue,
+          { x: Math.round(x) + 1, y: Math.round(y) },
+        ].sort((a, b) => a.x - b.x);
+      } else {
+        this.SleepValue[index].y = Math.round(y);
+      }
     },
   },
 });

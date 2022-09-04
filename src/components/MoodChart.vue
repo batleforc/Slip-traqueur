@@ -1,13 +1,6 @@
 <script setup lang="ts">
 import { useMainStore } from "@/stores/Main";
-import {
-  onMounted,
-  ref,
-  shallowRef,
-  watch,
-  type Ref,
-  type ShallowRef,
-} from "vue";
+import { onMounted, shallowRef, watch, type ShallowRef } from "vue";
 import Chart, { type ChartItem } from "chart.js/auto";
 import { getRelativePosition } from "chart.js/helpers";
 const Main = useMainStore();

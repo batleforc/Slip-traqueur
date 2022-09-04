@@ -1,3 +1,4 @@
+import { Color } from "@/model/Color";
 import {
   sleepBackColor,
   sleepBorderColor,
@@ -21,11 +22,15 @@ export const useMainStore = defineStore({
     year: 2022,
     Day: [...Array(31).keys()].map((i) => i + 1),
     MoodType: [
-      { name: "Great", bgColor: "blue", borderColor: "blue" },
-      { name: "Good", bgColor: "green", borderColor: "green" },
-      { name: "Meh", bgColor: "yellow", borderColor: "yellow" },
-      { name: "Tense/Anxious", bgColor: "orange", borderColor: "orange" },
-      { name: "Sad/Angry", bgColor: "red", borderColor: "red" },
+      { name: "Great", bgColor: Color.Green, borderColor: Color.Green },
+      { name: "Good", bgColor: Color.Blue, borderColor: Color.Blue },
+      { name: "Meh", bgColor: Color.Orange, borderColor: Color.Orange },
+      {
+        name: "Tense/Anxious",
+        bgColor: Color.Purple,
+        borderColor: Color.Purple,
+      },
+      { name: "Sad/Angry", bgColor: Color.Red, borderColor: Color.Red },
     ].reverse() as SleepMoodType[],
     SleepHours: [...Array(11).keys()].map((i) => i + 1 + "h"),
     MoodValue: getMoodValue(),
